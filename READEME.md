@@ -82,6 +82,8 @@ Try these URLs to test:
 
 ⚠️ Phishing: https://login-microsoft-secure.com/, https://mysecureportal.fake-domain.com/
 
+https://lastminute-dealzclose.shop/livesale/ProductManager/202?fbclid=PAQ0xDSwKMVyVleHRuA2FlbQEwAGFkaWQBqxxWsmSR1QGnduLWPYem31BlFPwTZ8z8oVoKyXg_b1xjpCxOKNJ96Ka3Wq8Wf-Y6FenpylA_aem_fLYEAkM3VNO6NI4ECPYCGA
+
 👨‍💻 Developer Info
 👤 Abhijeet Khanzode
 B.Tech Computer Science (Cybersecurity)
