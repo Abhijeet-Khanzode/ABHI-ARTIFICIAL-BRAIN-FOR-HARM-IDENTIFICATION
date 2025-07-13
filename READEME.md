@@ -1,12 +1,12 @@
 # ABHI – Artificial Brain for Harm Identification
 
-🛡️ A Chrome extension built to detect phishing & fraud sites using AI.  
+🛡️ A Browser based extension built to detect phishing & fraud sites using Machine Learning.  
 💬 Integrated with AI – Real time response from GPT. 
 👨‍💻 Developed by Abhijeet Khanzode
 
 # 🛡️ ABHI-SHIELD – Artificial Brain for Harm Identification
 
-`ABHI-SHIELD` is a real-time AI-powered Chrome application that detects **phishing websites**, alerts users with notifications, and enables **interactive conversation** with an intelligent chatbot – ABHI AI. It's backed by a trained machine learning model and designed for **cybersecurity awareness**.
+`ABHI-SHIELD` is a real-time AI-powered Browser application that detects **phishing websites**, alerts users with notifications, and enables **interactive conversation** with an intelligent chatbot – ABHI AI. It's backed by a trained machine learning model and designed for **cybersecurity awareness**.
 
 ---
 
