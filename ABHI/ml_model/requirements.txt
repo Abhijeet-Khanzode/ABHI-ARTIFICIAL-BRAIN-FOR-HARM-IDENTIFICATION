@@ -8,3 +8,4 @@ numpy
 xgboost
 flask_cors 
 colorama
+openai
