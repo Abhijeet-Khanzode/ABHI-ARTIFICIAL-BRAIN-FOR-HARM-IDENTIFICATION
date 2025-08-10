@@ -31,13 +31,13 @@ print(Fore.GREEN,Fore.RED+"""
 app = Flask(__name__)
 CORS(app)
 
-model = joblib.load("FINAL_MODEL/phishing_model.pkl")
+model = joblib.load("ABHI/FINAL_MODEL/phishing_model.pkl")
 
 SENDER_EMAIL = "abhi.s.khanzode@gmail.com"
 SENDER_PASSWORD = "ahlx zipv mbzi qmzb" 
 
 
-def load_false_positives(path="CSV/false_positive.csv"):
+def load_false_positives(path="ABHI/CSV/false_positive.csv"):
     try:
         df = pd.read_csv(path, names=["url", "label"])
         return set(df["url"].dropna().str.strip())
@@ -99,7 +99,7 @@ def review_feedback():
     issue = data.get("issue", "N/A")
 
     try:
-        with open("DATA/feedbackreview.txt", "a", encoding="utf-8") as f:
+        with open("ABHI/DATA/feedbackreview.txt", "a", encoding="utf-8") as f:
             f.write(f"📝 Feedback Received:\n")
             f.write(f"Name  : {name}\n")
             f.write(f"Email : {email}\n")
@@ -125,7 +125,7 @@ def feedback():
         print("Received:", url, feedback_type)
 
         if feedback_type == "false_positive":
-            with open("CSV/review.csv", "a") as f:
+            with open("ABHI/CSV/review.csv", "a") as f:
                 f.write(f"{url},0\n")  # 🟢 Correct format
             print("✅ Written to review.csv")
 
@@ -154,6 +154,7 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
+
 
 
 
