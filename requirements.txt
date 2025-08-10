@@ -1,0 +1,8 @@
+flask
+waitress
+pandas
+joblib
+scikit-learn
+requests
+numpy
+xgboost
