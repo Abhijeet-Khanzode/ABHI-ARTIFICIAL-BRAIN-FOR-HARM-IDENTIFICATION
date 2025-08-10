@@ -7,3 +7,4 @@ requests
 numpy
 xgboost
 flask_cors 
+colorama
