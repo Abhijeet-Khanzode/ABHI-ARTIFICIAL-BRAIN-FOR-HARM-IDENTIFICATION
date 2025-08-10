@@ -1,0 +1,20 @@
+https://secure-login-test.com	Simulates a fake secure login page
+https://bank-update-info.com	Fake banking site pattern
+https://paypal-verification.com	Looks like PayPal phishing
+https://login-microsoft-secure.com	Imitates Microsoft login
+https://update-your-credentials.com	Common phishing phrase
+https://example.com/login	Real domain with login path
+https://mysecureportal.fake-domain.com	Subdomain spoofing test
+https://www.abc.com/bank-login
+
+🛑 Fake / Phishing Test URLs
+Google Safe Browsing phishing demo
+http://testsafebrowsing.appspot.com/s/phishing.html
+
+Shortened suspicious URL
+http://bit.ly/2e0x7HF
+
+Custom dummy phishing example
+http://secure-login-verify-bank.com
+
+PhishTank live entry (check a random from verified list) — use any from your verified_online.csv
