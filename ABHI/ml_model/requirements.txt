@@ -6,3 +6,4 @@ scikit-learn
 requests
 numpy
 xgboost
+flask_cors 
