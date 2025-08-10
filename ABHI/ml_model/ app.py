@@ -13,6 +13,7 @@ from ai_brain import generate_reply
 import re
 from email_send import send_thank_you_email
 from waitress import serve
+import os
 
 print(Fore.GREEN,Fore.RED+""" 
 
@@ -154,6 +155,7 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
+
 
 
 
