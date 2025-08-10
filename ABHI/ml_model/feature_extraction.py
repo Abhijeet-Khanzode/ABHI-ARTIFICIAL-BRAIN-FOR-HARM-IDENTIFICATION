@@ -3,7 +3,7 @@ import re
 import os
 
 
-def load_safe_domains(filepath="ABHI/CSV/known_safe_domains.txt"):
+def load_safe_domains(filepath="CSV/known_safe_domains.txt"):
     try:
         # Make the filepath absolute relative to this script
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
