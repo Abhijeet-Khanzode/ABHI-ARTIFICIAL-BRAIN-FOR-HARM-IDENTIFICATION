@@ -48,7 +48,10 @@ def load_false_positives(path="ABHI/CSV/false_positive.csv"):
 
 FALSE_POSITIVES = load_false_positives()
 
-
+@app.route("/", methods=["GET"])
+def home():
+    return "Server is running ✅"
+      
 @app.route("/check", methods=["POST"])
 def check_url():
     try:
@@ -155,6 +158,7 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
+
 
 
 
