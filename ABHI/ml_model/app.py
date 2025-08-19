@@ -14,6 +14,8 @@ import re
 from email_send import send_thank_you_email
 from waitress import serve
 import os
+import xgboost as xgb
+
 
 print(Fore.GREEN,Fore.RED+""" 
 
@@ -32,7 +34,9 @@ print(Fore.GREEN,Fore.RED+"""
 app = Flask(__name__)
 CORS(app)
 
-model = joblib.load("ABHI/FINAL_MODEL/phishing_model.pkl")
+#model = joblib.load("ABHI/FINAL_MODEL/phishing_model.pkl")
+booster = xgb.Booster()
+booster.load_model("FINAL_MODEL/phishing_model.json")
 
 SENDER_EMAIL = "abhi.s.khanzode@gmail.com"
 SENDER_PASSWORD = "ahlx zipv mbzi qmzb" 
@@ -80,9 +84,12 @@ def check_url():
         # 🔍 Extract features and predict
         features = extract_features(url)
         feature_df = pd.DataFrame([features])
-        prediction = model.predict(feature_df)[0]
-        proba = float(model.predict_proba(feature_df)[0][1])  # probability of phishing
 
+        dmat = xgb.DMatrix(feature_df)
+        proba = float(booster.predict(dmat)[0])  # returns probability of class 1 (phishing)
+
+        prediction = 1 if proba > 0.5 else 0
+        
         return jsonify({
             "isPhishing": bool(prediction),
             "confidence": round(proba * 100, 2)
@@ -158,10 +165,3 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
-
-
-
-
-
-
-
