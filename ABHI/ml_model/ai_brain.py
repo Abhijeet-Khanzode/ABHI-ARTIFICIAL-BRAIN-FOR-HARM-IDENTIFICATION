@@ -2,7 +2,7 @@ import openai
 import os
 
 # ✅ API Key (use env var in production)
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "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"
 
 # ✅ Initialize OpenAI client
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
@@ -50,4 +50,5 @@ def generate_reply(question):
     except Exception as e:
         print("❌ GPT Error:", e)
         return "Sorry, ABHI is facing a technical issue right now."
+
 
