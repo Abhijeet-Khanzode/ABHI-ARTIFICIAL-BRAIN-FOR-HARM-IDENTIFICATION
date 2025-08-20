@@ -55,7 +55,7 @@ def generate_reply(question: str) -> str:
         return answer
 
 
-     except Exception as e:
+    except Exception as e:
         print("❌ GPT Error:", e)
         traceback.print_exc()
         return "Sorry, ABHI is facing a technical issue right now."
