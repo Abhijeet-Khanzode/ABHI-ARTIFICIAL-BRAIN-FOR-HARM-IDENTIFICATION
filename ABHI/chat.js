@@ -28,7 +28,7 @@ function sendMessage() {
     input.value = "";
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    fetch("http://127.0.0.1:5000/respond", {
+    fetch("https://abhi-shield.onrender.com/respond", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
@@ -43,3 +43,4 @@ function sendMessage() {
             chatBox.innerHTML += `<div class="ai"><b>ABHI:</b> Error reaching brain 😢</div>`;
         });
 }
+
