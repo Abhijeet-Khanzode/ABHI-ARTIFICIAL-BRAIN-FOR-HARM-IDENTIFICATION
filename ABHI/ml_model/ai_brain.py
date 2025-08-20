@@ -1,7 +1,7 @@
 import openai
 import os
 import traceback
-
+from openai import OpenAI
 
 # ✅ API Key (use env var in production)
 client = openai.OpenAI("OPENAI_API_KEY")
@@ -10,7 +10,7 @@ if not OPENAI_API_KEY:
     raise ValueError("❌ No OPENAI_API_KEY found in environment variables!")
 
 # ✅ Initialize OpenAI client
-client = openai.OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ✅ Default log path
 CHAT_LOG_DIR = os.path.join("ABHI", "DATA")
