@@ -4,7 +4,8 @@ import traceback
 
 
 # ✅ API Key (use env var in production)
-OPENAI_API_KEY = os.environ.get("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")
+client = openai.OpenAI("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ.get()
 if not OPENAI_API_KEY:
     raise ValueError("❌ No OPENAI_API_KEY found in environment variables!")
 

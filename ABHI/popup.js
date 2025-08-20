@@ -7,7 +7,7 @@ function sendMessage() {
     chatBox.innerHTML += `<div style="color:black; margin: 5px 0;"><b>You:</b> ${message}</div>`;
     input.value = "";
 
-    fetch("http://127.0.0.1:5050/ABHI/respond", {
+    fetch("https://abhi-shield.onrender.com/ABHI/respond", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: message })
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             url: form.url.value
         };
 
-        fetch("http://127.0.0.1:5000/feedback-review", {
+        fetch("https://abhi-shield.onrender.com/feedback-review", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData)
