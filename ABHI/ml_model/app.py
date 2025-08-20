@@ -36,7 +36,7 @@ CORS(app)
 
 #model = joblib.load("ABHI/FINAL_MODEL/phishing_model.pkl")
 booster = xgb.Booster()
-booster.load_model("FINAL_MODEL/phishing_model.json")
+booster.load_model("ABHI/FINAL_MODEL/phishing_model.json")
 
 SENDER_EMAIL = "abhi.s.khanzode@gmail.com"
 SENDER_PASSWORD = "ahlx zipv mbzi qmzb" 
@@ -165,3 +165,4 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
+
