@@ -32,16 +32,16 @@ def generate_reply(question: str) -> str:
 
     # Prepare prompt
     prompt = f"{chat_log}\nYou: {question}\nABHI:"
-      try:
+    try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",   # ✅ Fast + cheap model
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.5,
-            max_tokens=100,
-            top_p=0.8,
-            frequency_penalty=0.5,
-            presence_penalty=0.3
-        )
+        model="gpt-4o-mini",   # ✅ Fast + cheap model
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.5,
+        max_tokens=100,
+        top_p=0.8,
+        frequency_penalty=0.5,
+        presence_penalty=0.3
+    )
 
         answer = response.choices[0].message.content.strip()
 
@@ -59,6 +59,7 @@ def generate_reply(question: str) -> str:
         print("❌ GPT Error:", e)
         traceback.print_exc()
         return "Sorry, ABHI is facing a technical issue right now."
+
 
 
 
