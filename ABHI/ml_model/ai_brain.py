@@ -8,7 +8,7 @@ OPENAI_API_KEY = "sk-proj-vDRRIDX45hxiRB4_a8YRWAwkwMkK7Os0fwhQOprpivepsROeJa2B6d
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 # ✅ Default log path
-CHAT_LOG_PATH = "DATA/chat_log.txt"
+CHAT_LOG_PATH = "ABHI/DATA/chat_log.txt"
 
 def ensure_chat_log_exists():
     os.makedirs("DATA", exist_ok=True)
@@ -50,5 +50,6 @@ def generate_reply(question):
     except Exception as e:
         print("❌ GPT Error:", e)
         return "Sorry, ABHI is facing a technical issue right now."
+
 
 
