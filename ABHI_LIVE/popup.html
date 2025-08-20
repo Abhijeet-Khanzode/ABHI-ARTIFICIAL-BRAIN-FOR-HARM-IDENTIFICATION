@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ABHI Shield</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            width: 250px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<center>
+
+    <body>
+
+        <h3>ABHI Shield</h3>
+        <div class="toggle-container">
+            <span>Protection</span>
+            <label class="switch">
+                <input type="checkbox" id="toggleProtection">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <h2>Feedback from user.</h2>
+        <h3>
+            <p>Why you think this site is not phishing..? Please fill the below form so our ABHI team can review this
+                site.</p>
+        </h3>
+        <center>
+            <form id="feedbackForm">
+                <input type="hidden" name="url" id="urlField">
+                <label>Name:
+                    <input type="text" name="name" required>
+                </label>
+                <br>
+                <label>Email:
+                    <input type="email" name="email" required>
+                </label>
+                <br>
+                <label>Issue:
+                    <textarea name="issue" rows="3" required></textarea>
+                </label>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </center>
+        <p id="msg" style="color: green; margin-top: 10px;"></p>
+
+
+    </body>
+</center>
+<script src="popup.js"></script>
+
+</html>
