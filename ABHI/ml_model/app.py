@@ -124,7 +124,7 @@ def home():
 
             <h2>📥 Download & Install</h2>
             <ol>
-                <li>Download the extension from <a href="https://github.com/Abhijeet-Khanzode/ABHI-ARTIFICIAL-BRAIN-FOR-HARM-IDENTIFICATION">GitHub Repository</a></li>
+                <li>Download the extension from <a href="https://github.com/Abhijeet-Khanzode/ABHI-ARTIFICIAL-BRAIN-FOR-HARM-IDENTIFICATION-CLIENT">GitHub Repository</a></li>
                 <li>Go to your browser's extensions page (<b>chrome://extensions</b> in Chrome).</li>
                 <li>Enable <b>Developer Mode</b>.</li>
                 <li>Click on <b>Load Unpacked</b> and select the extension folder.</li>
@@ -254,4 +254,5 @@ def respond():
 if __name__ == "__main__":
       port = int(os.environ.get("PORT", 5000))
       serve(app, host="0.0.0.0", port=port)
+
 
