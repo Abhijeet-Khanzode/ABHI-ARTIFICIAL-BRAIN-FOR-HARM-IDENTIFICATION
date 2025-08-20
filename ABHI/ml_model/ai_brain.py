@@ -1,20 +1,17 @@
-import openai
 import os
 import traceback
 from openai import OpenAI
 
-# ✅ API Key (use env var in production)
-client = openai.OpenAI("OPENAI_API_KEY")
-OPENAI_API_KEY = os.environ.get()
+# ✅ Load API Key from environment variable
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("❌ No OPENAI_API_KEY found in environment variables!")
 
 # ✅ Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # ✅ Default log path
 CHAT_LOG_DIR = os.path.join("ABHI", "DATA")
-
 CHAT_LOG_PATH = os.path.join(CHAT_LOG_DIR, "chat_log.txt")
 
 def ensure_chat_log_exists():
@@ -33,34 +30,28 @@ def generate_reply(question: str) -> str:
 
     # Prepare prompt
     prompt = f"{chat_log}\nYou: {question}\nABHI:"
+
     try:
         response = client.chat.completions.create(
-        model="gpt-4o-mini",   # ✅ Fast + cheap model
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.5,
-        max_tokens=100,
-        top_p=0.8,
-        frequency_penalty=0.5,
-        presence_penalty=0.3
-    )
+            model="gpt-4o-mini",   # ✅ Fast + cheap model
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+            max_tokens=100,
+            top_p=0.8,
+            frequency_penalty=0.5,
+            presence_penalty=0.3
+        )
 
         answer = response.choices[0].message.content.strip()
 
-
         # Update chat log
-            # Update chat log
         updated_log = chat_log + f"\nYou: {question}\nABHI: {answer}"
         with open(CHAT_LOG_PATH, "w") as f:
             f.write(updated_log)
 
         return answer
 
-
     except Exception as e:
         print("❌ GPT Error:", e)
         traceback.print_exc()
         return "Sorry, ABHI is facing a technical issue right now."
-
-
-
-
