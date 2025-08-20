@@ -54,8 +54,97 @@ FALSE_POSITIVES = load_false_positives()
 
 @app.route("/", methods=["GET"])
 def home():
-    return "Server is running ✅"
-      
+    return """
+    <html>
+    <head>
+        <title>ABHI - Artificial Brain for Harm Identification</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #121212;
+                color: #ffffff;
+                padding: 30px;
+            }
+            .logo {
+                font-family: monospace;
+                white-space: pre;
+                font-size: 14px;
+                color: #00FF00;
+                margin-bottom: 20px;
+            }
+            .card {
+                background: #1e1e1e;
+                border-radius: 15px;
+                padding: 20px;
+                margin: auto;
+                max-width: 700px;
+                box-shadow: 0 0 15px rgba(0,255,0,0.3);
+                text-align: left;
+            }
+            h1 {
+                text-align: center;
+                color: #00ffcc;
+            }
+            a {
+                color: #00ffcc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logo">
+        ░█████╗░██████╗░██╗░░██╗██╗
+        ██╔══██╗██╔══██╗██║░░██║██║
+        ███████║██████╦╝███████║██║
+        ██╔══██║██╔══██╗██╔══██║██║
+        ██║░░██║██████╦╝██║░░██║██║
+        ╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝╚═╝
+        <br>(Artificial Brain for Harm Identification)
+        </div>
+
+        <div class="card">
+            <h1>About the Extension</h1>
+            <p>
+                This browser extension helps in detecting harmful and phishing content online 
+                using our AI-powered Artificial Brain for Harm Identification. 
+            </p>
+
+            <h2>🚀 Features</h2>
+            <ul>
+                <li>Phishing website detection</li>
+                <li>Content analysis & warnings</li>
+                <li>Human + AI double review</li>
+                <li>Automatic email alerts</li>
+            </ul>
+
+            <h2>📥 Download & Install</h2>
+            <ol>
+                <li>Download the extension from <a href="https://github.com/Abhijeet-Khanzode/ABHI-ARTIFICIAL-BRAIN-FOR-HARM-IDENTIFICATION">GitHub Repository</a></li>
+                <li>Go to your browser's extensions page (<b>chrome://extensions</b> in Chrome).</li>
+                <li>Enable <b>Developer Mode</b>.</li>
+                <li>Click on <b>Load Unpacked</b> and select the extension folder.</li>
+                <li>Done ✅, extension will be active.</li>
+            </ol>
+
+            <h2>📖 Usage</h2>
+            <p>
+                Once installed, the extension automatically scans websites you visit and 
+                shows warnings if suspicious activity is detected. You can also 
+                submit suspicious URLs for manual review.
+            </p>
+
+            <h2>👨‍💻 Developer</h2>
+            <p>Created by <b>Abhijeet Khanzode</b><br>
+            <a href="http://github.com/Abhijeet-Khanzode">GitHub Profile</a></p>
+        </div>
+    </body>
+    </html>
+    """
 @app.route("/check", methods=["POST"])
 def check_url():
     try:
