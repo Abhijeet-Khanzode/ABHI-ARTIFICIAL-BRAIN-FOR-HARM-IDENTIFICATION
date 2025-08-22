@@ -9,3 +9,6 @@ xgboost
 flask_cors 
 colorama
 openai
+sqlalchemy
+psycopg2-binary
+gunicorn
