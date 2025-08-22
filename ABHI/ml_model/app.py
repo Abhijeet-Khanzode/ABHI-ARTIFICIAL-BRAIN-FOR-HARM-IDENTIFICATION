@@ -15,7 +15,7 @@ from email_send import send_thank_you_email
 from waitress import serve
 import os
 import xgboost as xgb
-
+from db import init_db, insert_feedback_review, insert_review
 
 print(Fore.GREEN,Fore.RED+""" 
 
@@ -51,6 +51,8 @@ def load_false_positives(path="ABHI/CSV/false_positive.csv"):
         return set()
 
 FALSE_POSITIVES = load_false_positives()
+
+init_db()
 
 @app.route("/", methods=["GET"])
 def home():
@@ -187,6 +189,33 @@ def check_url():
     except Exception as e:
         return jsonify({"isPhishing": False, "error": str(e)}), 500
     
+# @app.route("/feedback-review", methods=["POST"])
+# def review_feedback():
+#     data = request.get_json()
+#     if not data:
+#         return jsonify({"status": "error", "message": "No data provided"}), 400
+
+#     name = data.get("name", "N/A")
+#     email = data.get("email", "N/A")
+#     url = data.get("url", "N/A")
+#     issue = data.get("issue", "N/A")
+
+#     try:
+#         with open("ABHI/DATA/feedbackreview.txt", "a", encoding="utf-8") as f:
+#             f.write(f"📝 Feedback Received:\n")
+#             f.write(f"Name  : {name}\n")
+#             f.write(f"Email : {email}\n")
+#             f.write(f"URL   : {url}\n")
+#             f.write(f"Issue : {issue}\n")
+#             f.write(f"{'-'*40}\n")    
+            
+#         send_thank_you_email(email, name, url)
+        
+#         return jsonify({"status": "success", "message": "Feedback recevied email sent"}), 200
+
+#     except Exception as e:
+#         return jsonify({"status": "error", "message": str(e)}), 500
+
 @app.route("/feedback-review", methods=["POST"])
 def review_feedback():
     data = request.get_json()
@@ -199,20 +228,42 @@ def review_feedback():
     issue = data.get("issue", "N/A")
 
     try:
-        with open("ABHI/DATA/feedbackreview.txt", "a", encoding="utf-8") as f:
-            f.write(f"📝 Feedback Received:\n")
-            f.write(f"Name  : {name}\n")
-            f.write(f"Email : {email}\n")
-            f.write(f"URL   : {url}\n")
-            f.write(f"Issue : {issue}\n")
-            f.write(f"{'-'*40}\n")    
-            
+        # ✅ DB me save karna
+        insert_feedback_review(name, email, url, issue)
+
+        # ✅ Email bhejna
         send_thank_you_email(email, name, url)
-        
-        return jsonify({"status": "success", "message": "Feedback recevied email sent"}), 200
+
+        return jsonify({"status": "success", "message": "Feedback received & email sent"}), 200
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+# @app.route('/feedback', methods=['POST'])
+# def feedback():
+#     try:
+#         data = request.get_json()
+#         url = data.get("url", "")
+#         feedback_type = data.get("feedback", "")
+
+#         print("🧠 Feedback Triggered")
+#         print("Received:", url, feedback_type)
+
+#         if feedback_type == "false_positive":
+#             with open("ABHI/CSV/review.csv", "a") as f:
+#                 f.write(f"{url},0\n")  # 🟢 Correct format
+#             print("✅ Written to review.csv")
+
+        # # trigger_auto_update() 
+        # retrain_model()
+        # global model
+        # model = joblib.load("ml_model/phishing_model.pkl")
+        # print("✅ Model reloaded after training.")
+        return jsonify({"success": True})
+            
+    # except Exception as e:
+    #     print(f"❌ Feedback Error: {e}")
+    #     return jsonify({"success": False, "error": str(e)}), 500
 
 @app.route('/feedback', methods=['POST'])
 def feedback():
@@ -225,17 +276,12 @@ def feedback():
         print("Received:", url, feedback_type)
 
         if feedback_type == "false_positive":
-            with open("ABHI/CSV/review.csv", "a") as f:
-                f.write(f"{url},0\n")  # 🟢 Correct format
-            print("✅ Written to review.csv")
+            # ✅ DB me save karna (review.csv ka replacement)
+            insert_review(url, 0)
+            print("✅ Written to review table")
 
-        # # trigger_auto_update() 
-        # retrain_model()
-        # global model
-        # model = joblib.load("ml_model/phishing_model.pkl")
-        # print("✅ Model reloaded after training.")
         return jsonify({"success": True})
-            
+
     except Exception as e:
         print(f"❌ Feedback Error: {e}")
         return jsonify({"success": False, "error": str(e)}), 500
